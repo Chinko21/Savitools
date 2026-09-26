@@ -70,6 +70,8 @@ function getToolIcon(href: string) {
       return Activity;
     case '/sdk':
       return BookOpen;
+    case '/network':
+      return Network;
     case '/settings':
       return Settings2;
     default:

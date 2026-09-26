@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'SaviTools Documentation',
   description:
-    'Per-tool usage guides for all ten SaviTools: setup, step-by-step usage, and troubleshooting.',
+    'Per-tool usage guides for all fifteen SaviTools: setup, step-by-step usage, and troubleshooting.',
 };
 
 export default function DocsIndexPage() {
@@ -20,7 +20,7 @@ export default function DocsIndexPage() {
             <h1 className="text-2xl font-semibold">SaviTools Documentation</h1>
           </div>
           <p className="text-muted-foreground text-sm mb-10 max-w-2xl">
-            How-to guides for every SaviTools tool: what each one does, what you need
+            How-to guides for every SaviTools tool (all fifteen tools): what each one does, what you need
             to get started, step-by-step usage, and common troubleshooting tips.
           </p>
 

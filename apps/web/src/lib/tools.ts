@@ -85,4 +85,18 @@ export const tools = [
       "Decode, filter, and replay Soroban contract events from raw ScVal XDR.",
     status: "MVP" as const,
   },
+  {
+    href: "/sdk",
+    label: "SDK Generator",
+    description:
+      "Generate copy-paste client code (JS, Python, Go, cURL) from Fluxa/CrowdPay endpoints.",
+    status: "MVP" as const,
+  },
+  {
+    href: "/network",
+    label: "Network Status",
+    description:
+      "Live Stellar network health: ledger close time, fee tracker, Horizon latency.",
+    status: "MVP" as const,
+  },
 ] as const;
