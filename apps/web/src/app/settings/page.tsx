@@ -613,11 +613,17 @@ function PasskeysSection() {
   );
 }
 
+import { ToolPageShell } from '@/components/tools/tool-page-shell';
+
 export default function SettingsPage() {
   const { user } = useAuth();
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12 space-y-8">
+    <ToolPageShell
+      title="Settings"
+      description="Manage your SaviTools account and Savitura ecosystem connections."
+    >
+      <div className="max-w-2xl mx-auto px-6 py-4 space-y-8">
       <div>
         <h1 className="text-xl font-semibold mb-2">Settings</h1>
         <p className="text-sm text-muted-foreground">
@@ -647,7 +653,8 @@ export default function SettingsPage() {
       <PasskeysSection />
       <VaultSection />
       <SessionsSection />
-    </div>
+      </div>
+    </ToolPageShell>
   );
 }
 

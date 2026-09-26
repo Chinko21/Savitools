@@ -1,4 +1,3 @@
-import { SiteHeader } from '@/components/layout/site-header';
 import { FederationTool } from '@/components/tools/federation-tool';
 import { ToolPageShell } from '@/components/tools/tool-page-shell';
 import { ErrorBoundary } from '@/components/tools/error-boundary';
@@ -6,9 +5,7 @@ import { Suspense } from 'react';
 
 export default function FederationPage() {
   return (
-    <>
-      <SiteHeader />
-      <ToolPageShell
+    <ToolPageShell
         title="Federation & TOML Inspector"
         description="Resolve Stellar federation addresses, inspect anchor stellar.toml files, and check SEP compliance."
       >
@@ -18,6 +15,5 @@ export default function FederationPage() {
           </ErrorBoundary>
         </Suspense>
       </ToolPageShell>
-    </>
   );
 }
