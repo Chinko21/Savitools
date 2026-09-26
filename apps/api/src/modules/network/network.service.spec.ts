@@ -198,6 +198,40 @@ describe("NetworkService", () => {
     });
   });
 
+  describe("verifyNetworkPassphrase", () => {
+    it("returns match true when passphrases match", async () => {
+      jest.spyOn(global, "fetch").mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ network_passphrase: "Public Global Stellar Network ; September 2015" }),
+      } as any);
+
+      const result = await service.verifyNetworkPassphrase(
+        "https://horizon.stellar.org",
+        "Public Global Stellar Network ; September 2015",
+      );
+      expect(result).toEqual({
+        match: true,
+        actualPassphrase: "Public Global Stellar Network ; September 2015",
+      });
+    });
+
+    it("returns match false when passphrases mismatch", async () => {
+      jest.spyOn(global, "fetch").mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ network_passphrase: "Test SDF Network ; September 2015" }),
+      } as any);
+
+      const result = await service.verifyNetworkPassphrase(
+        "https://horizon.stellar.org",
+        "Public Global Stellar Network ; September 2015",
+      );
+      expect(result).toEqual({
+        match: false,
+        actualPassphrase: "Test SDF Network ; September 2015",
+      });
+    });
+  });
+
   describe("pruneRetention", () => {
     it("deletes samples older than 90 days", async () => {
       await service.pruneRetention(new Date("2026-08-31T12:00:00.000Z"));

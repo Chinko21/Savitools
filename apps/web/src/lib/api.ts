@@ -623,10 +623,8 @@ export interface NetworkProfileInput {
 export type NetworkProfileExport = NetworkProfileInput;
 
 export interface NetworkPassphraseVerificationResult {
-  horizonUrl: string;
-  networkPassphrase: string;
-  expectedPassphrase?: string;
   match: boolean;
+  actualPassphrase: string;
 }
 
 export async function listNetworkProfiles() {
