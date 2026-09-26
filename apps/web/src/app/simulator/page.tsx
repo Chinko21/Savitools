@@ -1,4 +1,3 @@
-import { SiteHeader } from '@/components/layout/site-header';
 import { SimulatorTool } from '@/components/tools/simulator-tool';
 import { ToolPageShell } from '@/components/tools/tool-page-shell';
 import { ErrorBoundary } from '@/components/tools/error-boundary';
@@ -8,9 +7,7 @@ import { Suspense } from 'react';
 
 export default function SimulatorPage() {
   return (
-    <>
-      <SiteHeader />
-      <ToolPageShell
+    <ToolPageShell
         title="Payment Simulator"
         description="Simulate path payments, preview routing, and estimate fees."
         docsHref="/docs/simulator"
@@ -30,6 +27,5 @@ export default function SimulatorPage() {
           </ErrorBoundary>
         </Suspense>
       </ToolPageShell>
-    </>
   );
 }

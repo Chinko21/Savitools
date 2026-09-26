@@ -20,6 +20,14 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-3">
+          <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
+            <Link href="/docs" className="hover:text-foreground transition-colors">
+              Docs
+            </Link>
+            <Link href="/api" className="hover:text-foreground transition-colors">
+              API
+            </Link>
+          </nav>
           <CommandPaletteTrigger />
 
           <div className="flex items-center gap-4 text-sm">

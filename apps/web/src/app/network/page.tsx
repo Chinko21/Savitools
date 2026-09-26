@@ -32,6 +32,7 @@ import {
   Pencil,
 } from "lucide-react";
 import Link from "next/link";
+import { ToolPageShell } from '@/components/tools/tool-page-shell';
 import {
   getNetworkHistory,
   getNetworkStatus,
@@ -295,14 +296,13 @@ export default function NetworkStatusPage() {
   const networkUp = summary.uptimePercent > 0;
 
   return (
-    <div className="container mx-auto max-w-6xl space-y-6 p-6">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Network Status</h1>
-          <p className="mt-1 text-muted-foreground">
-            Live health, sampled Horizon latency, and recent availability.
-          </p>
-        </div>
+    <ToolPageShell
+      title="Network Status"
+      description="Live health, sampled Horizon latency, and recent availability."
+      docsHref="/docs/network"
+    >
+      <div className="space-y-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/docs/network"
@@ -658,7 +658,8 @@ export default function NetworkStatusPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </ToolPageShell>
   );
 }
 
