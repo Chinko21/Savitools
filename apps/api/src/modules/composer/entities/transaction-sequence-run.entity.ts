@@ -2,6 +2,8 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 
 @Entity('transaction_sequence_run')
 export class TransactionSequenceRun {
+  @Column({ name: 'user_id', nullable: true })
+  userId: string;
   @PrimaryColumn('uuid')
   id: string;
 

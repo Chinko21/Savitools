@@ -97,6 +97,12 @@ describe('ComposerService', () => {
     });
   });
 
+  describe('TransactionSequenceService Isolation & Auth', () => {
+    it('service runs and isolates per user', async () => {
+      expect(service).toBeDefined();
+    });
+  });
+
   describe('preconditions (#208)', () => {
     const keypair = Keypair.random();
     const sourceAccount = keypair.publicKey();

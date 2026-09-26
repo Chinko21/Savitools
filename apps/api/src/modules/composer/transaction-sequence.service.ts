@@ -154,13 +154,8 @@ export class TransactionSequenceService {
     sourceAccount: string,
     network: 'testnet' | 'mainnet',
   ): Promise<string> {
-    const build = await this.composerService.buildTransaction({
-      sourceAccount,
-      network,
-      sequenceNumber: undefined,
-      operations: [{ type: 'manage_data', name: 'savitools', value: 'seq' } as any],
-    });
-    return String(build.sequenceNumber);
+    const account = await this.composerService.getAccountDetails(sourceAccount, network);
+    return account.sequence;
   }
 
   private validateStepOrder(steps: TransactionStepInputDto[]): void {
@@ -228,5 +223,5 @@ export class TransactionSequenceService {
 }
 
 function networksFee(): string {
-  return '100';
+  return String(BASE_FEE);
 }
