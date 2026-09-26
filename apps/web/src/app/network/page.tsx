@@ -169,7 +169,7 @@ export default function NetworkStatusPage() {
           setPassphraseWarning(
             verification.match
               ? ""
-              : `Warning: Horizon network passphrase "${verification.networkPassphrase}" does not match profile passphrase "${profile.networkPassphrase}".`
+              : `Warning: Horizon network passphrase "${verification.actualPassphrase}" does not match profile passphrase "${profile.networkPassphrase}".`
           );
         } catch {
           setPassphraseWarning("Unable to verify network passphrase for this Horizon URL.");
@@ -311,6 +311,8 @@ export default function NetworkStatusPage() {
             <BookOpen className="h-3.5 w-3.5" />
             Usage docs
           </Link>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+            Network:
           <select
             className="rounded-md border border-border bg-background px-3 py-2 text-sm font-medium"
             value={activeProfileId ?? (network === "testnet" ? "testnet" : "builtin")}
@@ -324,6 +326,7 @@ export default function NetworkStatusPage() {
               </option>
             ))}
           </select>
+          </label>
           <button
             className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
             onClick={() => setShowProfileManager((v) => !v)}
@@ -421,35 +424,47 @@ export default function NetworkStatusPage() {
           </div>
           <form onSubmit={handleSaveProfile} className="space-y-4 border-t pt-4">
             <div className="flex flex-wrap gap-4">
+              <label className="flex flex-col text-xs font-medium text-muted-foreground gap-1">
+                Profile Name
               <input
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
                 placeholder="Profile name"
                 value={profileForm.name}
                 onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
                 required
               />
+              </label>
+              <label className="flex flex-col text-xs font-medium text-muted-foreground gap-1">
+                Horizon URL
               <input
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
                 placeholder="Horizon URL"
                 type="url"
                 value={profileForm.horizonUrl}
                 onChange={(e) => setProfileForm({ ...profileForm, horizonUrl: e.target.value })}
                 required
               />
+              </label>
+              <label className="flex flex-col text-xs font-medium text-muted-foreground gap-1">
+                Network Passphrase
               <input
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
                 placeholder="Network passphrase"
                 value={profileForm.networkPassphrase}
                 onChange={(e) => setProfileForm({ ...profileForm, networkPassphrase: e.target.value })}
                 required
               />
+              </label>
+              <label className="flex flex-col text-xs font-medium text-muted-foreground gap-1">
+                Friendbot URL (optional)
               <input
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
                 placeholder="Friendbot URL (optional)"
                 type="url"
                 value={profileForm.friendbotUrl}
                 onChange={(e) => setProfileForm({ ...profileForm, friendbotUrl: e.target.value })}
               />
+              </label>
             </div>
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 text-sm">
