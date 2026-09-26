@@ -22,8 +22,8 @@ SaviTools is a standalone product in the [Savitura](https://savitura.com) ecosys
 | **Ledger Monitor**        | Watch a Stellar address or contract for live activity; set threshold alerts           | MVP    |
 | **API Playground**        | Interactive request builder for Fluxa and CrowdPay APIs                               | MVP    |
 | **Contract Deployer**     | Upload and deploy Soroban WASM files to testnet from the browser                      | MVP    |
-| **SDK Generator**         | Generate copy-paste client code (JS, Python, Go, cURL) from Fluxa/CrowdPay endpoints  | Planned |
-| **Network Status**        | Live Stellar network health: ledger close time, fee tracker, Horizon latency          | Planned |
+| **SDK Generator**         | Generate copy-paste client code (JS, Python, Go, cURL) from Fluxa/CrowdPay endpoints  | MVP     |
+| **Network Status**        | Live Stellar network health: ledger close time, fee tracker, Horizon latency          | MVP     |
 | **Federation & TOML**     | Resolve federation addresses, inspect stellar.toml files, check SEP compliance        | MVP    |
 | **Order Book**            | Live DEX order book, spread analytics, and liquidity depth chart for any asset pair   | MVP    |
 | **Account Graph**         | Visualize signer networks, offers, and payment relationships with a force-directed graph | MVP |
@@ -42,8 +42,9 @@ Browser ────────────────────────
 API ──────────────────────────────────────────────────────────────────────
   NestJS (Fastify adapter) │ TypeORM │ BullMQ │ Swagger at /api/docs
   ┌─────────────────────────────────────────────────────────────────┐
-  │ modules: transaction · wallet · simulator · webhook             │
-  │          monitor · playground · contracts · sdkgen · network    │
+  │ modules: transaction · wallet · simulator · webhook · monitor   │
+  │          playground · contracts · sdkgen · network · federation │
+  │          metrics · sandbox · workspace · stellar · auth         │
   └─────────────────────────────────────────────────────────────────┘
           │                    │                    │
           ▼                    ▼                    ▼
@@ -287,3 +288,9 @@ MIT
 ## Observability
 
 The API includes a Prometheus-compatible `GET /metrics` endpoint with HTTP, Soroban RPC, contract invocation, Horizon, Redis, and Node.js runtime metrics. See [API metrics](docs/metrics.md) for access control, Prometheus scrape configuration, and the Grafana dashboard import template.
+
+           ├── federation/        # TOML and address resolution
+           ├── metrics/           # Prometheus metrics export
+           ├── sandbox/           # Wallet sandbox and Friendbot
+           ├── workspace/         # Multi-tenant workspace mgmt
+           ├── stellar/           # Stellar network / RPC helpers
